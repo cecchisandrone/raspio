@@ -1,6 +1,14 @@
-FROM arm32v6/python:2.7.14-alpine3.6
+FROM resin/rpi-raspbian:wheezy
 
-RUN apk update && apk add build-base
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    gcc \
+    python \
+    python-dev \
+    python-pip \
+    python-virtualenv \
+    --no-install-recommends && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
