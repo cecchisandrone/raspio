@@ -1,11 +1,9 @@
 FROM hypriot/rpi-python
 
-WORKDIR /app
-
-COPY . .
+COPY . /data
 
 RUN pip install -r requirements.txt
 
-CMD [ "python", "./main.py" ]
+CMD [ "python", "./data/main.py" ]
 
 EXPOSE 6000
