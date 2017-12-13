@@ -1,4 +1,4 @@
-FROM arm32v6/python:2.7.14-alpine3.6
+FROM hypriot/rpi-python
 
 WORKDIR /app
 
