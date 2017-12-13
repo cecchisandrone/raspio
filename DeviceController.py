@@ -19,7 +19,7 @@ class DeviceController:
       return "Device not found", 404
     else:
       distance = device.getDistance()
-      return distance, 200
+      return jsonify(distance), 200
 
   def toggleRelay(self, name):
     device = self.deviceManager.deviceInstances.get(name)
