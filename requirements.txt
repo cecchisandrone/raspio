@@ -1,3 +1,2 @@
 Flask==0.12.2
 rpi.gpio==0.6.3
-flask-classy==0.6.10
