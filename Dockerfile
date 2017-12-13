@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:jessie
+FROM resin/rpi-raspbian:stretch
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
@@ -13,6 +13,12 @@ RUN apt-get update && apt-get install -y \
 WORKDIR /app
 
 COPY . .
+
+RUN python --version
+
+RUN pip --version
+
+RUN pip install setuptools
 
 RUN pip install -r requirements.txt
 
