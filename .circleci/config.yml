@@ -3,12 +3,10 @@ jobs:
   build:
     machine:
       image: ubuntu-2004:202111-01
-    resource_class: medium
+    resource_class: arm.medium
     steps:
       - checkout
       - run: |
-          # ARM build
-          docker run --rm --privileged multiarch/qemu-user-static:register --reset 
           docker build -t cecchisandrone/raspio:latest . 
           docker login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD
           docker push cecchisandrone/raspio:latest
@@ -19,7 +17,7 @@ jobs:
   deploy:
     machine:
       image: ubuntu-2004:202111-01
-    resource_class: arm.medium
+    resource_class: medium
     working_directory: /tmp/project
     steps:
       - attach_workspace:
