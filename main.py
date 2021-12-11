@@ -17,6 +17,7 @@ def exit():
 
 if __name__ == '__main__':  
   app = Flask(__name__)
+  app.config['JSONIFY_PRETTYPRINT_REGULAR'] = False
   app.route('/devices', methods=['GET'])(deviceController.devicesList)
   app.route('/devices/sonar/<name>', methods=['GET'])(deviceController.getDistance)
   app.route('/devices/relay/<name>', methods=['PUT'])(deviceController.toggleRelay)

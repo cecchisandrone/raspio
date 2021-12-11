@@ -7,3 +7,5 @@ services:
     ports:
     - 6000:6000
     restart: always
+    volumes:
+    - /home/pi/config.ini:/app/config.ini
