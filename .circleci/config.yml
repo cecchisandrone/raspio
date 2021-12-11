@@ -12,6 +12,10 @@ jobs:
           docker build -t cecchisandrone/raspio:latest . 
           docker login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_PASSWORD
           docker push cecchisandrone/raspio:latest
+      - persist_to_workspace:
+          root: /home/circleci
+          paths:
+            - project/*
   deploy:
     machine:
       image: ubuntu-2004:202111-01
