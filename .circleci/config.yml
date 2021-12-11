@@ -18,7 +18,7 @@ jobs:
     resource_class: arm.medium
     steps:
       - run:
-          command: scp -v -o StrictHostKeyChecking=no -P $SMARTHOME_SSH_PORT docker-compose.yml pi@$SMARTHOME_SSH_HOST:/home/pi/docker-compose.yml
+          command: scp -v -o StrictHostKeyChecking=no -P $SMARTHOME_SSH_PORT docker-compose.yml pi@$SMARTHOME_SSH_HOST:/home/pi/
       - run:
           command: ssh -o StrictHostKeyChecking=no -l pi $SMARTHOME_SSH_HOST -p $SMARTHOME_SSH_PORT "mv docker-compose.yml docker-compose-raspio.yml && docker-compose -p raspio stop && docker-compose -f docker-compose-raspio.yml pull && docker-compose -p raspio up -d"
           no_output_timeout: 30m
