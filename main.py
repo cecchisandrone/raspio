@@ -4,9 +4,9 @@ import os
 from flask import Flask
 from DeviceManager import DeviceManager
 from DeviceController import DeviceController
-import ConfigParser
+import configparser
 
-devicesConfig = ConfigParser.ConfigParser()
+devicesConfig = configparser.ConfigParser()
 devicesConfig.read(os.getenv("RASPIO_CONFIG_FILE", default='config.ini'))
 deviceManager = DeviceManager(devicesConfig)
 deviceController = DeviceController(deviceManager)

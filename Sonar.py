@@ -28,5 +28,5 @@ class Sonar:
     distance = elapsed * 34300
     # That was the distance there and back so halve the value
     distance = distance / 2
-    print "Distance : %.1f" % distance
+    print("Distance : %.1f" % distance)
     return distance

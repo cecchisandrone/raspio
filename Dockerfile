@@ -1,27 +1,10 @@
-FROM resin/rpi-raspbian:stretch
-
-# Install dependencies
-RUN apt-get update && apt-get install -y \
-    gcc \
-    python \
-    python-dev \
-    python-pip \
-    python-virtualenv \
-    --no-install-recommends && \
-    rm -rf /var/lib/apt/lists/*
-
+FROM python:3.5-alpine
+RUN apk add --no-cache build-base
 WORKDIR /app
-
-COPY . .
-
+COPY *.py *.pyc config.ini requirements.txt ./
+RUN ls -al
 RUN python --version
-
 RUN pip --version
-
-RUN pip install setuptools
-
-RUN pip install -r requirements.txt
-
-CMD [ "python", "/app/main.py" ]
-
+RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 6000
+CMD [ "python", "/app/main.py" ]
